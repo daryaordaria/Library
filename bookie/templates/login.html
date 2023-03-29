@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block title %}
+<title>Book Site | Login</title>
+{% endblock %} {% block content %}
+
+<div id="container">
+  <div class="header">
+    <h2 style="margin: 0; font-size: 24px">Login</h2>
+  </div>
+  <form action="#" method="POST">
+    {% csrf_token %}
+    <div id="form-control">
+      <label>Username:</label>
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        placeholder="Enter Username"
+        maxlength="100"
+        autofocus=""
+        required=""
+        id="id_username"
+      />
+    </div>
+
+    <div id="form-control">
+      <label>Passowrd</label>
+      <input
+        type="password"
+        name="password1"
+        class="form-control"
+        placeholder="At least eight characters"
+        maxlength="100"
+        required=""
+        id="id_password1"
+      />
+    </div>
+    {% for message in messages %}
+    <p class="successMsg">{{message}}</p>
+    {% endfor%}
+    <div id="haveAnAccount">
+      <p style="margin: 0">Don't have an account?</p>
+      <a href="{% url 'registration' %}" style="margin-left: 8px"
+        ><strong>Register</strong></a
+      >
+    </div>
+
+    <button type="submit" id="submitButton">Login</button>
+  </form>
+</div>
+
+{% endblock %}
